@@ -1,22 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./index.scss";
 
 export default function Login() {
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
   return (
     <div className="d-flex align-items-center justify-content-center vw-100 vh-100">
       <div className="login-form p-4 mx-3">
         <h1 className="login-header text-center mb-4">LOGIN</h1>
         <div>
-          <Form>
+          <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control required type="email" placeholder="Enter email" />
+              <Form.Control.Feedback type="invalid">
+                Required field
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control required type="password" placeholder="Password" />
+              <Form.Control.Feedback type="invalid">
+                Required field
+              </Form.Control.Feedback>
             </Form.Group>
             <Button className="mt-4" variant="primary" type="submit" block>
               Login
