@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./index.scss";
 
 export default function Login() {
   const [validated, setValidated] = useState(false);
