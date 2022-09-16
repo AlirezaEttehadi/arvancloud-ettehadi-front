@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./index.scss";
 
 export default function Register() {
@@ -49,7 +50,9 @@ export default function Register() {
         </div>
         <div className="mt-3">
           <span className="mr-2">Already Registered?</span>
-          <span className="font-weight-bold">Login</span>
+          <Link className="register-login-button font-weight-bold" to="/">
+            Login
+          </Link>
         </div>
       </div>
     </div>
