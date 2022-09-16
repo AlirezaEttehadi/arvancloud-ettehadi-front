@@ -16,7 +16,7 @@ export default function Register() {
     setValidated(true);
   };
   return (
-    <div className="d-flex align-items-center justify-content-center vw-100 vh-100 position-relative">
+    <>
       <div className="register-form p-4 mx-3">
         <h1 className="register-header text-center mb-4">REGISTER</h1>
         <div>
@@ -55,6 +55,6 @@ export default function Register() {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }

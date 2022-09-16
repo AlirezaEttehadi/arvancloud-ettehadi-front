@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AuthLayout from "./Layout/Auth";
+import DashboardLayout from "./Layout/Dashboard";
 import Articles from "./components/Articles";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -7,9 +9,30 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/articles" element={<Articles />} />
+        <Route
+          path="/"
+          element={
+            <AuthLayout>
+              <Login />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AuthLayout>
+              <Register />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/articles"
+          element={
+            <DashboardLayout>
+              <Articles />
+            </DashboardLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

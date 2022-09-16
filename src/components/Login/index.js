@@ -17,7 +17,7 @@ export default function Login() {
     setValidated(true);
   };
   return (
-    <div className="d-flex align-items-center justify-content-center vw-100 vh-100 position-relative">
+    <>
       {show && (
         <Alert
           className="position-absolute m-3 login-alert"
@@ -63,6 +63,6 @@ export default function Login() {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
