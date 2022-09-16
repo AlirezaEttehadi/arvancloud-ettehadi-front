@@ -1,0 +1,14 @@
+@import "../../styles/_colors.scss";
+.register-form {
+  background-color: $light_silver;
+  width: 450px;
+  border-radius: 4px;
+}
+.register-header {
+  color: $gray;
+}
+.register-alert {
+  max-width: 456px;
+  top: 0px;
+  right: 0px;
+}
