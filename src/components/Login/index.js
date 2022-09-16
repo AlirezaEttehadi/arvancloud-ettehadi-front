@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./index.scss";
 
 export default function Login() {
@@ -54,7 +55,12 @@ export default function Login() {
         </div>
         <div className="mt-3">
           <span className="mr-2">Don't have an account?</span>
-          <span className="font-weight-bold">Register Now</span>
+          <Link
+            className="login-register-button font-weight-bold"
+            to="/register"
+          >
+            Register Now
+          </Link>
         </div>
       </div>
     </div>
