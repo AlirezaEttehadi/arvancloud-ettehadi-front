@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Alert, Button, Form } from "react-bootstrap";
 import "./index.scss";
 
 export default function Login() {
   const [validated, setValidated] = useState(false);
+  const [show, setShow] = useState(true);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -15,7 +16,18 @@ export default function Login() {
     setValidated(true);
   };
   return (
-    <div className="d-flex align-items-center justify-content-center vw-100 vh-100">
+    <div className="d-flex align-items-center justify-content-center vw-100 vh-100 position-relative">
+      {show && (
+        <Alert
+          className="position-absolute m-3 login-alert"
+          variant="danger"
+          dismissible
+          onClose={() => setShow(false)}
+        >
+          <span className="font-weight-bold mr-1">Login Failed!</span>
+          <span>User name and/or Password is invalid</span>
+        </Alert>
+      )}
       <div className="login-form p-4 mx-3">
         <h1 className="login-header text-center mb-4">LOGIN</h1>
         <div>
