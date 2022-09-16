@@ -6,7 +6,7 @@ export default function Dashboard({ children }) {
   return (
     <div>
       <Header />
-      <div>
+      <div className="d-flex">
         <Sidebar />
         {children}
       </div>
