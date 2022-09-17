@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Navbar } from "react-bootstrap";
 import HamburgerMenu from "./HamburgerMenu";
 
-export default function Header() {
+export default function Header({ isSidebarOpen, toggleSidebar }) {
   return (
     <Navbar
       bg="dark"
@@ -10,7 +10,13 @@ export default function Header() {
       expand="lg"
       className="d-flex align-items-center justify-content-between"
     >
-      <HamburgerMenu className="d-md-none d-inline-block" />
+      <Button
+        variant="outline-info"
+        onClick={() => toggleSidebar(!isSidebarOpen)}
+        className="d-inline-block d-md-none"
+      >
+        <HamburgerMenu />
+      </Button>
       <div>
         <Navbar.Brand className="mr-3">Arvan Challenge</Navbar.Brand>
         <span className="text-white">Welcome alireza</span>
