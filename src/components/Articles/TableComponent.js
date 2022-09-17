@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import TableCellDropDown from "./TableCellDropDown";
 
-export default function TableComponent() {
+export default function TableComponent({ setDeleteModalState }) {
   return (
     <Table hover responsive>
       <thead>
@@ -25,7 +25,10 @@ export default function TableComponent() {
           <td>
             <div className="d-flex align-items-center justify-content-between">
               <span>@mdo </span>
-              <TableCellDropDown />
+              <TableCellDropDown
+                id={1}
+                setDeleteModalState={setDeleteModalState}
+              />
             </div>
           </td>
         </tr>
