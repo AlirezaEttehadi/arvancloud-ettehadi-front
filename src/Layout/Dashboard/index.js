@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import SnackbarMessage from "./components/SnackbarMessage";
+import SnackbarMessage from "../components/SnackbarMessage";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import MobileSidebar from "./components/Sidebar/MobileSidebar";

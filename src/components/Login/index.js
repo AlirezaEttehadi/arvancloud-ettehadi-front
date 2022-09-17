@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Alert, Button, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function Login() {
   const [validated, setValidated] = useState(false);
-  const [show, setShow] = useState(true);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -17,17 +16,6 @@ export default function Login() {
   };
   return (
     <>
-      {show && (
-        <Alert
-          className="position-absolute m-3 login-alert"
-          variant="danger"
-          dismissible
-          onClose={() => setShow(false)}
-        >
-          <span className="font-weight-bold mr-1">Login Failed!</span>
-          <span>User name and/or Password is invalid</span>
-        </Alert>
-      )}
       <div className="login-form p-4 mx-3">
         <h1 className="login-header text-center mb-4">LOGIN</h1>
         <div>
