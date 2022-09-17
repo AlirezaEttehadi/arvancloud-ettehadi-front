@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import TableCellDropDown from "./TableCellDropDown";
 
 export default function TableComponent() {
   return (
@@ -21,79 +22,129 @@ export default function TableComponent() {
           <td>Otto</td>
           <td>@mdo</td>
           <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
           <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>@fat</td>
-          <td>@fat</td>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td>3</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td>4</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td>5</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td>6</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td>7</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td>8</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
         <tr>
-          <td>9</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+          <td>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>@mdo </span>
+              <TableCellDropDown />
+            </div>
+          </td>
         </tr>
       </tbody>
     </Table>
