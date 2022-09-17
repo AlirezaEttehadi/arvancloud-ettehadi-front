@@ -40,7 +40,7 @@ export default function TableComponent() {
           <td>@twitter</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>4</td>
           <td>Larry the Bird</td>
           <td>Larry the Bird</td>
           <td>@twitter</td>
@@ -48,7 +48,7 @@ export default function TableComponent() {
           <td>@twitter</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>5</td>
           <td>Larry the Bird</td>
           <td>Larry the Bird</td>
           <td>@twitter</td>
@@ -56,7 +56,7 @@ export default function TableComponent() {
           <td>@twitter</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>6</td>
           <td>Larry the Bird</td>
           <td>Larry the Bird</td>
           <td>@twitter</td>
@@ -64,7 +64,7 @@ export default function TableComponent() {
           <td>@twitter</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>7</td>
           <td>Larry the Bird</td>
           <td>Larry the Bird</td>
           <td>@twitter</td>
@@ -72,7 +72,7 @@ export default function TableComponent() {
           <td>@twitter</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>8</td>
           <td>Larry the Bird</td>
           <td>Larry the Bird</td>
           <td>@twitter</td>
@@ -80,7 +80,7 @@ export default function TableComponent() {
           <td>@twitter</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>9</td>
           <td>Larry the Bird</td>
           <td>Larry the Bird</td>
           <td>@twitter</td>
@@ -88,7 +88,7 @@ export default function TableComponent() {
           <td>@twitter</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>10</td>
           <td>Larry the Bird</td>
           <td>Larry the Bird</td>
           <td>@twitter</td>
