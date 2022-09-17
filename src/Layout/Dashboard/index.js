@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import MobileSidebar from "./components/Sidebar/MobileSidebar";
 
 export default function Dashboard({ children }) {
-  const [isSidebarOpen, toggleSidebar] = useState(true);
+  const isDesktopSize = window.innerWidth > 768;
+
+  const mobileSidebarRef = useRef(null);
+
+  const openMobileSidebar = () => {
+    mobileSidebarRef.current.style.width = "100%";
+  };
+  const closeMobileSidebar = () => {
+    mobileSidebarRef.current.style.width = "0%";
+  };
+
   return (
     <div>
-      <Header isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <Header openMobileSidebar={openMobileSidebar} />
       <div className="d-flex">
-        <Sidebar isSidebarOpen={isSidebarOpen} />
+        {isDesktopSize ? (
+          <Sidebar />
+        ) : (
+          <MobileSidebar
+            ref={mobileSidebarRef}
+            closeMobileSidebar={closeMobileSidebar}
+          />
+        )}
         {children}
       </div>
     </div>

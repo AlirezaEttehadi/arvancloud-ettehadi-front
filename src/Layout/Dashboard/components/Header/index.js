@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Navbar } from "react-bootstrap";
 import HamburgerMenu from "./HamburgerMenu";
 
-export default function Header({ isSidebarOpen, toggleSidebar }) {
+export default function Header({ openMobileSidebar }) {
   return (
     <Navbar
       bg="dark"
@@ -12,7 +12,7 @@ export default function Header({ isSidebarOpen, toggleSidebar }) {
     >
       <Button
         variant="outline-info"
-        onClick={() => toggleSidebar(!isSidebarOpen)}
+        onClick={() => openMobileSidebar()}
         className="d-inline-block d-md-none"
       >
         <HamburgerMenu />

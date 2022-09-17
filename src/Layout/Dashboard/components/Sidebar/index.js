@@ -1,17 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
-export default function Sidebar({ isSidebarOpen }) {
-  const sidebarRef = useRef(null);
-  useEffect(() => {
-    if (isSidebarOpen) {
-      sidebarRef.current.style.width = "250px";
-    } else {
-      sidebarRef.current.style.width = "0px";
-    }
-  }, [isSidebarOpen]);
-
+export default function Sidebar() {
   return (
-    <div ref={sidebarRef} className="sidebar-container">
+    <div className="sidebar-container">
       <div className="vertical-menu">
         <a className="active">All Articles</a>
         <a>New Article</a>
