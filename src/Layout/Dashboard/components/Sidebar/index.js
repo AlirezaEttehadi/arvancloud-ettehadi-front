@@ -11,7 +11,7 @@ export default function Sidebar({ isSidebarOpen }) {
   }, [isSidebarOpen]);
 
   return (
-    <div ref={sidebarRef} className="sidebar-container vh-100">
+    <div ref={sidebarRef} className="sidebar-container">
       <div className="vertical-menu">
         <a className="active">All Articles</a>
         <a>New Article</a>
