@@ -4,6 +4,7 @@ import DashboardLayout from "./Layout/Dashboard";
 import Articles from "./components/Articles";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Article from "./components/Article";
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
           element={
             <DashboardLayout>
               <Articles />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/articles/create"
+          element={
+            <DashboardLayout>
+              <Article />
             </DashboardLayout>
           }
         />
