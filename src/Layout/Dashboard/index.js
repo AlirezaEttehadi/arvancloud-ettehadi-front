@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import SnackbarMessage from "./components/SnackbarMessage";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import MobileSidebar from "./components/Sidebar/MobileSidebar";
@@ -18,6 +19,7 @@ export default function Dashboard({ children }) {
   return (
     <div>
       <Header openMobileSidebar={openMobileSidebar} />
+      <SnackbarMessage />
       <div className="d-flex">
         {isDesktopSize ? (
           <Sidebar />
