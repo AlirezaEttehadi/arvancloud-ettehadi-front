@@ -8,7 +8,7 @@ import { getArticles } from "../../redux/articles/action";
 function Articles({ _getArticles, articles }) {
   const [deleleModalState, setDeleteModalState] = useState({
     isOpen: false,
-    id: null,
+    slug: null,
   });
   useEffect(() => {
     _getArticles();
@@ -26,7 +26,7 @@ function Articles({ _getArticles, articles }) {
         show={deleleModalState.isOpen}
         id={deleleModalState.id}
         setDeleteModalState={setDeleteModalState}
-        onHide={() => setDeleteModalState({ isOpen: false, id: null })}
+        onHide={() => setDeleteModalState({ isOpen: false, slug: null })}
       />
     </div>
   );
