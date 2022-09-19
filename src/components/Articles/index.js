@@ -15,9 +15,12 @@ function Articles({ _getArticles, articles }) {
   }, []);
 
   return (
-    <div className="d-flex flex-column pt-3 px-3 w-100">
+    <div className="d-flex flex-column pt-3 px-3 w-100 vh-100">
       <h1 className="mb-4">All Posts</h1>
-      <TableComponent setDeleteModalState={setDeleteModalState} />
+      <TableComponent
+        articles={articles}
+        setDeleteModalState={setDeleteModalState}
+      />
       <TablePagination />
       <DeleteModal
         show={deleleModalState.isOpen}
