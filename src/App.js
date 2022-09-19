@@ -42,6 +42,14 @@ function App() {
             </DashboardLayout>
           }
         />
+        <Route
+          path="/articles/edit/:slug"
+          element={
+            <DashboardLayout>
+              <Article />
+            </DashboardLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
