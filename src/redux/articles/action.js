@@ -1,4 +1,5 @@
 import {
+  CREATE_ARTICLE,
   DELETE_ARTICLE,
   GET_ARTICLES,
   SET_ARTICLES,
@@ -25,6 +26,12 @@ export const deleteArticle = (data) => {
 export const setArticlesCount = (data) => {
   return {
     type: SET_ARTICLES_COUNT,
+    payload: data,
+  };
+};
+export const createArticle = (data) => {
+  return {
+    type: CREATE_ARTICLE,
     payload: data,
   };
 };
