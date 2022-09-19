@@ -34,7 +34,7 @@ export default function TableComponent({ setDeleteModalState, articles }) {
                 <div className="d-flex align-items-center justify-content-between">
                   <span>{article.createdAt}</span>
                   <TableCellDropDown
-                    id={1}
+                    id={article.slug}
                     setDeleteModalState={setDeleteModalState}
                   />
                 </div>
