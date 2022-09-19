@@ -1,6 +1,5 @@
 import React from "react";
-import { Table } from "react-bootstrap";
-import TableCellDropDown from "./TableCellDropDown";
+import { Dropdown, DropdownButton, Table } from "react-bootstrap";
 
 export default function TableComponent({ setDeleteModalState, articles }) {
   return (
@@ -33,10 +32,23 @@ export default function TableComponent({ setDeleteModalState, articles }) {
               <td>
                 <div className="d-flex align-items-center justify-content-between">
                   <span>{article.createdAt}</span>
-                  <TableCellDropDown
-                    slug={article.slug}
-                    setDeleteModalState={setDeleteModalState}
-                  />
+                  <DropdownButton
+                    variant="info"
+                    id="dropdown-basic-button"
+                    title="..."
+                  >
+                    <Dropdown.Item>Edit</Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() =>
+                        setDeleteModalState({
+                          isOpen: true,
+                          slug: article.slug,
+                        })
+                      }
+                    >
+                      Delete
+                    </Dropdown.Item>
+                  </DropdownButton>
                 </div>
               </td>
             </tr>
