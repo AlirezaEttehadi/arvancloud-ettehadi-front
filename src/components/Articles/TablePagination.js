@@ -1,13 +1,20 @@
 import React from "react";
 import { Pagination } from "react-bootstrap";
 
-export default function TablePagination() {
+export default function TablePagination({ numberOfPages }) {
+  const active = 1;
+  const pages = [];
+  for (let number = 1; number <= numberOfPages; number++) {
+    pages.push(
+      <Pagination.Item key={number} active={number === active}>
+        {number}
+      </Pagination.Item>
+    );
+  }
   return (
     <Pagination className="align-self-center my-5">
       <Pagination.Prev />
-      <Pagination.Item>{1}</Pagination.Item>
-      <Pagination.Item active>{2}</Pagination.Item>
-      <Pagination.Item>{3}</Pagination.Item>
+      {pages}
       <Pagination.Next />
     </Pagination>
   );

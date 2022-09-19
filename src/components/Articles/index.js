@@ -6,7 +6,13 @@ import { connect } from "react-redux";
 import { deleteArticle, getArticles } from "../../redux/articles/action";
 import Spinner from "react-bootstrap/Spinner";
 
-function Articles({ _getArticles, articles, _deleteArticle, loading }) {
+function Articles({
+  _getArticles,
+  articles,
+  _deleteArticle,
+  loading,
+  articlesCount,
+}) {
   const [deleleModalState, setDeleteModalState] = useState({
     isOpen: false,
     slug: null,
@@ -14,6 +20,7 @@ function Articles({ _getArticles, articles, _deleteArticle, loading }) {
   useEffect(() => {
     _getArticles();
   }, []);
+  const numberOfPages = Math.ceil(articlesCount / 10);
 
   return (
     <div className="d-flex flex-column pt-3 px-3 w-100 vh-100">
@@ -26,7 +33,9 @@ function Articles({ _getArticles, articles, _deleteArticle, loading }) {
             articles={articles}
             setDeleteModalState={setDeleteModalState}
           />
-          <TablePagination />
+          {numberOfPages > 1 ? (
+            <TablePagination numberOfPages={numberOfPages} />
+          ) : null}
           <DeleteModal
             show={deleleModalState.isOpen}
             slug={deleleModalState.slug}
@@ -40,7 +49,11 @@ function Articles({ _getArticles, articles, _deleteArticle, loading }) {
 }
 
 function mapStateToProps(state) {
-  return { articles: state.article.articles, loading: state.global.loading };
+  return {
+    articles: state.article.articles,
+    loading: state.global.loading,
+    articlesCount: state.article.articlesCount,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

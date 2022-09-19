@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { setArticles } from "./action";
+import { setArticles, setArticlesCount } from "./action";
 import { DELETE_ARTICLE, GET_ARTICLES } from "./constants";
 import request from "../../apis/request";
 import { articlesEntity, articleEntity } from "../../apis/articles/index";
@@ -10,6 +10,7 @@ function* getArticlesSaga(action) {
     yield put(startLoading());
     const articles = yield call(request, "get", articlesEntity);
     yield put(setArticles(articles.data.articles));
+    yield put(setArticlesCount(articles.data.articlesCount));
     yield put(stopLoading());
   } catch (e) {
     yield put(stopLoading());
