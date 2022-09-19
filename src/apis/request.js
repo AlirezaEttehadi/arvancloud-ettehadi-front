@@ -9,7 +9,7 @@ export default async function request(
   params = undefined,
   config = null
 ) {
-  const config = {
+  const configs = {
     baseURL: ArvanCloudMockBaseURL,
     method,
     url,
@@ -17,6 +17,6 @@ export default async function request(
     params,
     ...config,
   };
-  const result = await axios.request(config);
+  const result = await axios.request(configs);
   return result;
 }

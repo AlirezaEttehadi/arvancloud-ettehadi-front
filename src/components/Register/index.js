@@ -1,33 +1,49 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { register } from "../../redux/user/action";
 
-export default function Register() {
+function Register({ _register }) {
   const [validated, setValidated] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+    if (form.checkValidity() === true) {
+      _register({
+        username,
+        email,
+        password,
+      });
     }
-
     setValidated(true);
   };
+
   return (
     <>
       <div className="register-form p-4 mx-3">
         <h1 className="register-header text-center mb-4">REGISTER</h1>
         <div>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicUser">
+            <Form.Group
+              controlId="formBasicUser"
+              onChange={(event) => setUsername(event.target.value)}
+            >
               <Form.Label>User</Form.Label>
               <Form.Control required type="text" placeholder="Enter username" />
               <Form.Control.Feedback type="invalid">
                 Required field
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group
+              controlId="formBasicEmail"
+              onChange={(event) => setEmail(event.target.value)}
+            >
               <Form.Label>Email</Form.Label>
               <Form.Control required type="email" placeholder="Enter email" />
               <Form.Control.Feedback type="invalid">
@@ -35,7 +51,10 @@ export default function Register() {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group
+              controlId="formBasicPassword"
+              onChange={(event) => setPassword(event.target.value)}
+            >
               <Form.Label>Password</Form.Label>
               <Form.Control required type="password" placeholder="Password" />
               <Form.Control.Feedback type="invalid">
@@ -57,3 +76,15 @@ export default function Register() {
     </>
   );
 }
+
+function mapStateToProps(state) {
+  return { user: state.user.user };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    _register: (data) => dispatch(register(data)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
