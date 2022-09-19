@@ -4,8 +4,8 @@ import userReducer from "./user/reducer";
 import articlesReducer from "./articles/reducer";
 
 const rootReducer = combineReducers({
-  userReducer,
-  articlesReducer,
+  user: userReducer,
+  article: articlesReducer,
 });
 
 export default rootReducer;
