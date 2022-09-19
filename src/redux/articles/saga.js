@@ -1,12 +1,13 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getArticlesRequest } from "../../services/articles";
 import { setArticles } from "./action";
 import { GET_ARTICLES } from "./constants";
+import request from "../../apis/request";
+import { articlesEntity } from "../../apis/articles/index";
 
-function* getArticlesSaga() {
+function* getArticlesSaga(action) {
   try {
-    const user = yield call(getArticlesRequest);
-    yield put(setArticles(user.data.data));
+    const articles = yield call(request, "get", articlesEntity);
+    yield put(setArticles(articles.data.articles));
   } catch (e) {
     console.log(e);
   }
