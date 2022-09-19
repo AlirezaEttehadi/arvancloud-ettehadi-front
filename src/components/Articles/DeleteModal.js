@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 
 export default function DeleteModal(props) {
+  const { onHide, slug, _deleteArticle } = props;
   return (
     <Modal {...props} size="md" centered>
       <Modal.Header closeButton>
@@ -13,10 +14,10 @@ export default function DeleteModal(props) {
         <span>Are you sure to delete article?</span>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-dark" onClick={props.onHide}>
+        <Button variant="outline-dark" onClick={onHide}>
           No
         </Button>
-        <Button variant="danger" onClick={() => console.log(props.slug)}>
+        <Button variant="danger" onClick={() => _deleteArticle(slug)}>
           Yes
         </Button>
       </Modal.Footer>

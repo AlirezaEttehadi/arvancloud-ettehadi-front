@@ -3,9 +3,9 @@ import TableComponent from "./TableComponent";
 import TablePagination from "./TablePagination";
 import DeleteModal from "./DeleteModal";
 import { connect } from "react-redux";
-import { getArticles } from "../../redux/articles/action";
+import { deleteArticle, getArticles } from "../../redux/articles/action";
 
-function Articles({ _getArticles, articles }) {
+function Articles({ _getArticles, articles, _deleteArticle }) {
   const [deleleModalState, setDeleteModalState] = useState({
     isOpen: false,
     slug: null,
@@ -25,8 +25,8 @@ function Articles({ _getArticles, articles }) {
       <DeleteModal
         show={deleleModalState.isOpen}
         slug={deleleModalState.slug}
-        setDeleteModalState={setDeleteModalState}
         onHide={() => setDeleteModalState({ isOpen: false, slug: null })}
+        _deleteArticle={_deleteArticle}
       />
     </div>
   );
@@ -39,6 +39,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     _getArticles: (data) => dispatch(getArticles(data)),
+    _deleteArticle: (data) => dispatch(deleteArticle(data)),
   };
 }
 

@@ -1,4 +1,4 @@
-import { GET_ARTICLES, SET_ARTICLES } from "./constants";
+import { DELETE_ARTICLE, GET_ARTICLES, SET_ARTICLES } from "./constants";
 
 export const getArticles = () => {
   return {
@@ -8,6 +8,12 @@ export const getArticles = () => {
 export const setArticles = (data) => {
   return {
     type: SET_ARTICLES,
+    payload: data,
+  };
+};
+export const deleteArticle = (data) => {
+  return {
+    type: DELETE_ARTICLE,
     payload: data,
   };
 };
