@@ -35,6 +35,14 @@ function App() {
           }
         />
         <Route
+          path="/articles/page/:page"
+          element={
+            <DashboardLayout>
+              <Articles />
+            </DashboardLayout>
+          }
+        />
+        <Route
           path="/articles/create"
           element={
             <DashboardLayout>
