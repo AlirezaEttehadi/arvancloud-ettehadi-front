@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
 import { Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 const MobileSidebar = ({ closeMobileSidebar }, ref) => {
   return (
@@ -12,8 +13,25 @@ const MobileSidebar = ({ closeMobileSidebar }, ref) => {
         <span>&times;</span>
       </Button>
       <div className="overlay-content">
-        <a href="#">All Articles</a>
-        <a href="#">New Article</a>
+        <NavLink
+          end
+          to="/articles/"
+          style={({ isActive }) => ({
+            backgroundColor: isActive && "rgba(255, 255, 255, 0.15)",
+          })}
+          onClick={() => closeMobileSidebar()}
+        >
+          All Articles
+        </NavLink>
+        <NavLink
+          to="/articles/create"
+          style={({ isActive }) => ({
+            backgroundColor: isActive && "rgba(255, 255, 255, 0.15)",
+          })}
+          onClick={() => closeMobileSidebar()}
+        >
+          New Article
+        </NavLink>
       </div>
     </div>
   );
