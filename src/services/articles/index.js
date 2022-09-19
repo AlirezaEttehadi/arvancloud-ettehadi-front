@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getArticlesRequest = (page = 1, pageSize = 20) => {
+export const getArticlesRequest = (page = 1, pageSize = 10) => {
   return axios.get(
     `https://api.realworld.io/api/articles?limit=${pageSize}&offset=${
       page * pageSize
