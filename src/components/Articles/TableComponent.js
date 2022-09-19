@@ -19,10 +19,7 @@ export default function TableComponent({ setDeleteModalState, articles }) {
       <tbody>
         {articles?.map((article, index) => {
           return (
-            <tr
-              key={article.slug}
-              onClick={() => navigate(`/articles/edit/${article.slug}`)}
-            >
+            <tr key={article.slug}>
               <td>{index + 1}</td>
               <td>{article.title}</td>
               <td>{article.author.username}</td>
@@ -42,7 +39,11 @@ export default function TableComponent({ setDeleteModalState, articles }) {
                     id="dropdown-basic-button"
                     title="..."
                   >
-                    <Dropdown.Item>Edit</Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => navigate(`/articles/edit/${article.slug}`)}
+                    >
+                      Edit
+                    </Dropdown.Item>
                     <Dropdown.Item
                       onClick={() =>
                         setDeleteModalState({
