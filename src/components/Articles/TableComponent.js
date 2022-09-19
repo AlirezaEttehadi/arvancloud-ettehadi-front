@@ -22,7 +22,13 @@ export default function TableComponent({ setDeleteModalState, articles }) {
               <td>{index + 1}</td>
               <td>{article.title}</td>
               <td>{article.author.username}</td>
-              <td>{article.tagList?.[0]}</td>
+              <td>
+                <div className="d-flex flex-column align-items-center justify-content-center">
+                  {article.tagList.map((tag) => (
+                    <span>{tag}</span>
+                  ))}
+                </div>
+              </td>
               <td>{article.description}</td>
               <td>
                 <div className="d-flex align-items-center justify-content-between">
