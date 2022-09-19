@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { login } from "../../redux/user/action";
 
-export default function Login() {
+function Login({ _login }) {
   const [validated, setValidated] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+    if (form.checkValidity() === true) {
+      _login({
+        email,
+        password,
+      });
     }
-
     setValidated(true);
   };
   return (
@@ -20,7 +27,10 @@ export default function Login() {
         <h1 className="login-header text-center mb-4">LOGIN</h1>
         <div>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group
+              controlId="formBasicEmail"
+              onChange={(event) => setEmail(event.target.value)}
+            >
               <Form.Label>Email</Form.Label>
               <Form.Control required type="email" placeholder="Enter email" />
               <Form.Control.Feedback type="invalid">
@@ -28,7 +38,10 @@ export default function Login() {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group
+              controlId="formBasicPassword"
+              onChange={(event) => setPassword(event.target.value)}
+            >
               <Form.Label>Password</Form.Label>
               <Form.Control required type="password" placeholder="Password" />
               <Form.Control.Feedback type="invalid">
@@ -53,3 +66,15 @@ export default function Login() {
     </>
   );
 }
+
+function mapStateToProps(state) {
+  return { user: state.user.user };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    _login: (data) => dispatch(login(data)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

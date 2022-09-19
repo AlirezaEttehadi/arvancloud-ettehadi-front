@@ -1,4 +1,4 @@
-import { GET_USER, REGISTER, SET_USER } from "./constants";
+import { GET_USER, LOGIN, REGISTER, SET_USER } from "./constants";
 
 export const getUser = () => {
   return {
@@ -14,6 +14,12 @@ export const setUser = (data) => {
 export const register = (data) => {
   return {
     type: REGISTER,
+    payload: data,
+  };
+};
+export const login = (data) => {
+  return {
+    type: LOGIN,
     payload: data,
   };
 };
