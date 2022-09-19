@@ -13,9 +13,9 @@ export default function TablePagination({ numberOfPages }) {
   }
   return (
     <Pagination className="align-self-center my-5">
-      <Pagination.Prev />
+      <Pagination.Prev disabled={active === 1} />
       {pages}
-      <Pagination.Next />
+      <Pagination.Next disabled={active === numberOfPages} />
     </Pagination>
   );
 }
