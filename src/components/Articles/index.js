@@ -24,7 +24,7 @@ function Articles({ _getArticles, articles }) {
       <TablePagination />
       <DeleteModal
         show={deleleModalState.isOpen}
-        id={deleleModalState.id}
+        slug={deleleModalState.slug}
         setDeleteModalState={setDeleteModalState}
         onHide={() => setDeleteModalState({ isOpen: false, slug: null })}
       />

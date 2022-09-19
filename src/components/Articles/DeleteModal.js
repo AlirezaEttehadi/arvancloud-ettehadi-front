@@ -16,7 +16,7 @@ export default function DeleteModal(props) {
         <Button variant="outline-dark" onClick={props.onHide}>
           No
         </Button>
-        <Button variant="danger" onClick={() => console.log(props.id)}>
+        <Button variant="danger" onClick={() => console.log(props.slug)}>
           Yes
         </Button>
       </Modal.Footer>
