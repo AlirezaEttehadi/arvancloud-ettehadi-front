@@ -2,8 +2,10 @@ import {
   CREATE_ARTICLE,
   DELETE_ARTICLE,
   GET_ARTICLES,
+  GET_TAGS,
   SET_ARTICLES,
   SET_ARTICLES_COUNT,
+  SET_TAGS,
 } from "./constants";
 
 export const getArticles = () => {
@@ -32,6 +34,17 @@ export const setArticlesCount = (data) => {
 export const createArticle = (data) => {
   return {
     type: CREATE_ARTICLE,
+    payload: data,
+  };
+};
+export const getTags = () => {
+  return {
+    type: GET_TAGS,
+  };
+};
+export const setTags = (data) => {
+  return {
+    type: SET_TAGS,
     payload: data,
   };
 };

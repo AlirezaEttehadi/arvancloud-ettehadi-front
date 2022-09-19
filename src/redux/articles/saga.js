@@ -1,8 +1,17 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { setArticles, setArticlesCount } from "./action";
-import { CREATE_ARTICLE, DELETE_ARTICLE, GET_ARTICLES } from "./constants";
+import { setArticles, setArticlesCount, setTags } from "./action";
+import {
+  CREATE_ARTICLE,
+  DELETE_ARTICLE,
+  GET_ARTICLES,
+  GET_TAGS,
+} from "./constants";
 import request from "../../apis/request";
-import { articlesEntity, articleEntity } from "../../apis/articles/index";
+import {
+  articlesEntity,
+  articleEntity,
+  tagsEntity,
+} from "../../apis/articles/index";
 import { startLoading, stopLoading } from "../global/action";
 
 function* getArticlesSaga(action) {
@@ -42,11 +51,23 @@ function* createArticleSaga(action) {
     console.log(e);
   }
 }
+function* getTagsSaga() {
+  try {
+    yield put(startLoading());
+    const tags = yield call(request, "get", tagsEntity);
+    yield put(setTags(tags.data.tags));
+    yield put(stopLoading());
+  } catch (e) {
+    yield put(stopLoading());
+    console.log(e);
+  }
+}
 
 function* myArticlesSaga() {
   yield takeLatest(GET_ARTICLES, getArticlesSaga);
   yield takeLatest(DELETE_ARTICLE, deleteArticleSaga);
   yield takeLatest(CREATE_ARTICLE, createArticleSaga);
+  yield takeLatest(GET_TAGS, getTagsSaga);
 }
 
 export default myArticlesSaga;
