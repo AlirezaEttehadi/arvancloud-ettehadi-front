@@ -5,7 +5,7 @@ import DeleteModal from "./DeleteModal";
 import { connect } from "react-redux";
 import { deleteArticle, getArticles } from "../../redux/articles/action";
 
-function Articles({ _getArticles, articles, _deleteArticle }) {
+function Articles({ _getArticles, articles, _deleteArticle, loading }) {
   const [deleleModalState, setDeleteModalState] = useState({
     isOpen: false,
     slug: null,
@@ -33,7 +33,7 @@ function Articles({ _getArticles, articles, _deleteArticle }) {
 }
 
 function mapStateToProps(state) {
-  return { articles: state.article.articles };
+  return { articles: state.article.articles, loading: state.global.loading };
 }
 
 function mapDispatchToProps(dispatch) {
