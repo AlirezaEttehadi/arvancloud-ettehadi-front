@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Navbar } from "react-bootstrap";
 import HamburgerMenu from "./HamburgerMenu";
+import logout from "../../../../utils/logout";
 
 export default function Header({ openMobileSidebar }) {
   return (
@@ -21,7 +22,9 @@ export default function Header({ openMobileSidebar }) {
         <Navbar.Brand className="mr-3">Arvan Challenge</Navbar.Brand>
         <span className="text-white">Welcome alireza</span>
       </div>
-      <Button variant="outline-info">Logout</Button>
+      <Button variant="outline-info" onClick={() => logout()}>
+        Logout
+      </Button>
     </Navbar>
   );
 }
