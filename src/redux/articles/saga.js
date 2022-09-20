@@ -14,7 +14,11 @@ import {
   articleEntity,
   tagsEntity,
 } from "../../apis/articles/index";
-import { startLoading, stopLoading } from "../global/action";
+import {
+  setSnackbarMessage,
+  startLoading,
+  stopLoading,
+} from "../global/action";
 
 function* getArticlesSaga(action) {
   try {
@@ -36,6 +40,15 @@ function* deleteArticleSaga(action) {
       "delete",
       articleEntity(action.payload)
     );
+    yield put(
+      setSnackbarMessage({
+        variant: "success",
+        shortMessage: "Well done!",
+        longMessage: "Article deleted successfuly",
+        layoutType: "dashboard",
+        show: true,
+      })
+    );
     yield call(getArticlesSaga);
     yield put(stopLoading());
   } catch (e) {
@@ -48,6 +61,15 @@ function* createArticleSaga(action) {
     yield put(startLoading());
     const article = yield call(request, "post", articlesEntity, action.payload);
     yield call(action.callback, "/articles");
+    yield put(
+      setSnackbarMessage({
+        variant: "success",
+        shortMessage: "Well done!",
+        longMessage: "Article created successfuly",
+        layoutType: "dashboard",
+        show: true,
+      })
+    );
     yield put(stopLoading());
   } catch (e) {
     yield put(stopLoading());
@@ -76,6 +98,15 @@ function* editArticleSaga(action) {
       action.payload
     );
     yield call(action.callback, "/articles");
+    yield put(
+      setSnackbarMessage({
+        variant: "success",
+        shortMessage: "Well done!",
+        longMessage: "Article edited successfuly",
+        layoutType: "dashboard",
+        show: true,
+      })
+    );
     yield put(stopLoading());
   } catch (e) {
     yield put(stopLoading());

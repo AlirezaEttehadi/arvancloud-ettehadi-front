@@ -4,7 +4,11 @@ import { setUser } from "./action";
 import { GET_USER, LOGIN, REGISTER } from "./constants";
 import request from "../../apis/request";
 import { loginUserEntity, usersEntity } from "../../apis/user/index";
-import { startLoading, stopLoading } from "../global/action";
+import {
+  setSnackbarMessage,
+  startLoading,
+  stopLoading,
+} from "../global/action";
 function* getUserSaga() {
   try {
     yield put(startLoading());
@@ -43,6 +47,15 @@ function* loginSaga(action) {
     yield put(stopLoading());
   } catch (e) {
     yield put(stopLoading());
+    yield put(
+      setSnackbarMessage({
+        variant: "danger",
+        shortMessage: "Login Failed!",
+        longMessage: "Username and/or Password is invalid",
+        layoutType: "auth",
+        show: true,
+      })
+    );
     console.log(e);
   }
 }
