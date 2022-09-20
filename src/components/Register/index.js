@@ -16,9 +16,7 @@ function Register({ _register }) {
     const form = event.currentTarget;
     if (form.checkValidity() === true) {
       _register({
-        username,
-        email,
-        password,
+        user: { username, email, password },
       });
     }
     setValidated(true);
