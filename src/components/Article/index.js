@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createArticle, getTags } from "../../redux/articles/action";
 
 function Article({ _createArticle, _getTags, tags }) {
@@ -9,17 +10,23 @@ function Article({ _createArticle, _getTags, tags }) {
   const [description, setDescription] = useState("");
   const [body, setBody] = useState("");
   const [localTags, setLocalTags] = useState([]);
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
     const form = event.currentTarget;
     if (form.checkValidity() === true) {
-      _createArticle({
-        title,
-        description,
-        body,
-        tags: localTags,
-      });
+      _createArticle(
+        {
+          article: {
+            title,
+            description,
+            body,
+            tags: localTags,
+          },
+        },
+        navigate
+      );
     }
     setValidated(true);
   };
@@ -87,7 +94,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    _createArticle: (data) => dispatch(createArticle(data)),
+    _createArticle: (data, callback) => dispatch(createArticle(data, callback)),
     _getTags: () => dispatch(getTags()),
   };
 }

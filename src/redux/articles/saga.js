@@ -45,6 +45,7 @@ function* createArticleSaga(action) {
   try {
     yield put(startLoading());
     const article = yield call(request, "post", articlesEntity, action.payload);
+    yield call(action.callback, "/articles");
     yield put(stopLoading());
   } catch (e) {
     yield put(stopLoading());

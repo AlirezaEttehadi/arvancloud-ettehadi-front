@@ -31,10 +31,11 @@ export const setArticlesCount = (data) => {
     payload: data,
   };
 };
-export const createArticle = (data) => {
+export const createArticle = (data, callback) => {
   return {
     type: CREATE_ARTICLE,
     payload: data,
+    callback,
   };
 };
 export const getTags = () => {

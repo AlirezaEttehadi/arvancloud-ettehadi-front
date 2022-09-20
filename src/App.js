@@ -13,7 +13,7 @@ import axios from "axios";
 function App() {
   const token = JSON.parse(localStorage.getItem("user"))?.token;
   if (token) {
-    axios.defaults.headers.common["Authorization"] = token;
+    axios.defaults.headers.common["Authorization"] = `Token ${token}`;
   }
   return (
     <BrowserRouter>
