@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "../../redux/user/action";
 
-function Register({ _register }) {
+function Register({ _register, loading }) {
   const [validated, setValidated] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -59,7 +59,23 @@ function Register({ _register }) {
                 Required field
               </Form.Control.Feedback>
             </Form.Group>
-            <Button className="mt-4" variant="primary" type="submit" block>
+            <Button
+              className="mt-4"
+              variant="primary"
+              type="submit"
+              block
+              disabled={loading}
+            >
+              {loading && (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  className="mr-1"
+                />
+              )}
               Register
             </Button>
           </Form>
@@ -76,7 +92,7 @@ function Register({ _register }) {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user.user };
+  return { user: state.user.user, loading: state.global.loading };
 }
 
 function mapDispatchToProps(dispatch) {
