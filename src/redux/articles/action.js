@@ -1,9 +1,12 @@
 import {
+  CLEARE_ARTICLE,
   CREATE_ARTICLE,
   DELETE_ARTICLE,
   EDIT_ARTICLE,
+  GET_ARTICLE,
   GET_ARTICLES,
   GET_TAGS,
+  SET_ARTICLE,
   SET_ARTICLES,
   SET_ARTICLES_COUNT,
   SET_TAGS,
@@ -56,5 +59,22 @@ export const editArticle = (data, callback, slug) => {
     payload: data,
     callback,
     slug,
+  };
+};
+export const getArticle = (data) => {
+  return {
+    type: GET_ARTICLE,
+    payload: data,
+  };
+};
+export const setArticle = (data) => {
+  return {
+    type: SET_ARTICLE,
+    payload: data,
+  };
+};
+export const cleareArticle = () => {
+  return {
+    type: CLEARE_ARTICLE,
   };
 };

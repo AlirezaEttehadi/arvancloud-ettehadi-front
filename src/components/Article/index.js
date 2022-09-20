@@ -3,12 +3,23 @@ import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  cleareArticle,
   createArticle,
   editArticle,
+  getArticle,
   getTags,
 } from "../../redux/articles/action";
 
-function Article({ _createArticle, _getTags, tags, loading, _editArticle }) {
+function Article({
+  _createArticle,
+  _getTags,
+  tags,
+  loading,
+  _editArticle,
+  _getArticle,
+  article,
+  _cleareArticle,
+}) {
   const { slug } = useParams();
   const [validated, setValidated] = useState(false);
   const [title, setTitle] = useState("");
@@ -51,6 +62,26 @@ function Article({ _createArticle, _getTags, tags, loading, _editArticle }) {
   useEffect(() => {
     _getTags();
   }, []);
+  useEffect(() => {
+    if (slug) {
+      _getArticle(slug);
+    } else {
+      _cleareArticle();
+    }
+  }, [slug]);
+  useEffect(() => {
+    if (article) {
+      setTitle(article.title);
+      setDescription(article.description);
+      setBody(article.body);
+      setLocalTags(article.tagList);
+    } else {
+      setTitle("");
+      setDescription("");
+      setBody("");
+      setLocalTags([]);
+    }
+  }, [article]);
 
   return (
     <div className="d-flex flex-column pt-3 px-3 w-100 vh-100">
@@ -63,7 +94,7 @@ function Article({ _createArticle, _getTags, tags, loading, _editArticle }) {
               onChange={(event) => setTitle(event.target.value)}
             >
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Title" />
+              <Form.Control type="text" placeholder="Title" value={title} />
             </Form.Group>
 
             <Form.Group
@@ -71,14 +102,18 @@ function Article({ _createArticle, _getTags, tags, loading, _editArticle }) {
               onChange={(event) => setDescription(event.target.value)}
             >
               <Form.Label>Description</Form.Label>
-              <Form.Control type="text" placeholder="Description" />
+              <Form.Control
+                type="text"
+                placeholder="Description"
+                value={description}
+              />
             </Form.Group>
             <Form.Group
               controlId="formBasicBody"
               onChange={(event) => setBody(event.target.value)}
             >
               <Form.Label>Body</Form.Label>
-              <Form.Control as="textarea" rows="8" name="Body" />
+              <Form.Control as="textarea" rows="8" name="Body" value={body} />
             </Form.Group>
           </div>
           <div className="col-12 col-md-3 pl-0">
@@ -116,6 +151,7 @@ function Article({ _createArticle, _getTags, tags, loading, _editArticle }) {
 function mapStateToProps(state) {
   return {
     articles: state.article.articles,
+    article: state.article.article,
     tags: state.article.tags,
     loading: state.global.loading,
   };
@@ -126,6 +162,8 @@ function mapDispatchToProps(dispatch) {
     _createArticle: (data, callback) => dispatch(createArticle(data, callback)),
     _editArticle: (data, callback, slug) =>
       dispatch(editArticle(data, callback, slug)),
+    _getArticle: (data) => dispatch(getArticle(data)),
+    _cleareArticle: () => dispatch(cleareArticle()),
     _getTags: () => dispatch(getTags()),
   };
 }

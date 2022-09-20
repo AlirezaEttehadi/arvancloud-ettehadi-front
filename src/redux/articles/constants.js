@@ -6,3 +6,6 @@ export const CREATE_ARTICLE = "CREATE_ARTICLE";
 export const GET_TAGS = "GET_TAGS";
 export const SET_TAGS = "SET_TAGS";
 export const EDIT_ARTICLE = "EDIT_ARTICLE";
+export const GET_ARTICLE = "GET_ARTICLE";
+export const SET_ARTICLE = "SET_ARTICLE";
+export const CLEARE_ARTICLE = "CLEARE_ARTICLE";
