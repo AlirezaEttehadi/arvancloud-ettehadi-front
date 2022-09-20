@@ -8,8 +8,13 @@ import Article from "./components/Article";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AuthRoute } from "./AuthRoute";
 import PageNotFound from "./components/PageNotFound";
+import axios from "axios";
 
 function App() {
+  const token = JSON.parse(localStorage.getItem("user"))?.token;
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = token;
+  }
   return (
     <BrowserRouter>
       <Routes>
