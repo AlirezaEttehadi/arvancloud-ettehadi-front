@@ -1,6 +1,7 @@
 import {
   CREATE_ARTICLE,
   DELETE_ARTICLE,
+  EDIT_ARTICLE,
   GET_ARTICLES,
   GET_TAGS,
   SET_ARTICLES,
@@ -47,5 +48,13 @@ export const setTags = (data) => {
   return {
     type: SET_TAGS,
     payload: data,
+  };
+};
+export const editArticle = (data, callback, slug) => {
+  return {
+    type: EDIT_ARTICLE,
+    payload: data,
+    callback,
+    slug,
   };
 };

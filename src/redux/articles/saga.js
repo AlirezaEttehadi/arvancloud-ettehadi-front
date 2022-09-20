@@ -3,6 +3,7 @@ import { setArticles, setArticlesCount, setTags } from "./action";
 import {
   CREATE_ARTICLE,
   DELETE_ARTICLE,
+  EDIT_ARTICLE,
   GET_ARTICLES,
   GET_TAGS,
 } from "./constants";
@@ -64,11 +65,29 @@ function* getTagsSaga() {
   }
 }
 
+function* editArticleSaga(action) {
+  try {
+    yield put(startLoading());
+    const article = yield call(
+      request,
+      "put",
+      articleEntity(action.slug),
+      action.payload
+    );
+    yield call(action.callback, "/articles");
+    yield put(stopLoading());
+  } catch (e) {
+    yield put(stopLoading());
+    console.log(e);
+  }
+}
+
 function* myArticlesSaga() {
   yield takeLatest(GET_ARTICLES, getArticlesSaga);
   yield takeLatest(DELETE_ARTICLE, deleteArticleSaga);
   yield takeLatest(CREATE_ARTICLE, createArticleSaga);
   yield takeLatest(GET_TAGS, getTagsSaga);
+  yield takeLatest(EDIT_ARTICLE, editArticleSaga);
 }
 
 export default myArticlesSaga;

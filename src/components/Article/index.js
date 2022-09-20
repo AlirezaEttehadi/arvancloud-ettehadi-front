@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createArticle, getTags } from "../../redux/articles/action";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  createArticle,
+  editArticle,
+  getTags,
+} from "../../redux/articles/action";
 
-function Article({ _createArticle, _getTags, tags, loading }) {
+function Article({ _createArticle, _getTags, tags, loading, _editArticle }) {
+  const { slug } = useParams();
   const [validated, setValidated] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,17 +21,30 @@ function Article({ _createArticle, _getTags, tags, loading }) {
     event.stopPropagation();
     const form = event.currentTarget;
     if (form.checkValidity() === true) {
-      _createArticle(
-        {
-          article: {
-            title,
-            description,
-            body,
-            tags: localTags,
-          },
-        },
-        navigate
-      );
+      slug
+        ? _editArticle(
+            {
+              article: {
+                title,
+                description,
+                body,
+                tags: localTags,
+              },
+            },
+            navigate,
+            slug
+          )
+        : _createArticle(
+            {
+              article: {
+                title,
+                description,
+                body,
+                tags: localTags,
+              },
+            },
+            navigate
+          );
     }
     setValidated(true);
   };
@@ -106,6 +124,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     _createArticle: (data, callback) => dispatch(createArticle(data, callback)),
+    _editArticle: (data, callback, slug) =>
+      dispatch(editArticle(data, callback, slug)),
     _getTags: () => dispatch(getTags()),
   };
 }
