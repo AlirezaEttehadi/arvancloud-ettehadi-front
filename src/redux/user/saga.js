@@ -20,6 +20,7 @@ function* registerSaga(action) {
   try {
     yield put(startLoading());
     const user = yield call(request, "post", usersEntity, action.payload);
+    localStorage.setItem("user", JSON.stringify(user.data.user));
     yield put(setUser(user.data.data));
     yield put(stopLoading());
   } catch (e) {
@@ -31,6 +32,7 @@ function* loginSaga(action) {
   try {
     yield put(startLoading());
     const user = yield call(request, "post", loginUserEntity, action.payload);
+    localStorage.setItem("user", JSON.stringify(user.data.user));
     yield put(setUser(user.data.data));
     yield put(stopLoading());
   } catch (e) {
