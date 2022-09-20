@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createArticle, getTags } from "../../redux/articles/action";
 
-function Article({ _createArticle, _getTags, tags }) {
+function Article({ _createArticle, _getTags, tags, loading }) {
   const [validated, setValidated] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -77,7 +77,17 @@ function Article({ _createArticle, _getTags, tags }) {
             </Form.Group>
           </div>
         </div>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={loading}>
+          {loading && (
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+              className="mr-1"
+            />
+          )}
           Submit
         </Button>
       </Form>
@@ -89,6 +99,7 @@ function mapStateToProps(state) {
   return {
     articles: state.article.articles,
     tags: state.article.tags,
+    loading: state.global.loading,
   };
 }
 
