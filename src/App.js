@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import Article from "./components/Article";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AuthRoute } from "./AuthRoute";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );
