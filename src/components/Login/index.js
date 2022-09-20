@@ -15,8 +15,7 @@ function Login({ _login }) {
     const form = event.currentTarget;
     if (form.checkValidity() === true) {
       _login({
-        email,
-        password,
+        user: { email, password },
       });
     }
     setValidated(true);
