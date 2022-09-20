@@ -11,15 +11,17 @@ export const setUser = (data) => {
     payload: data,
   };
 };
-export const register = (data) => {
+export const register = (data, callback) => {
   return {
     type: REGISTER,
     payload: data,
+    callback,
   };
 };
-export const login = (data) => {
+export const login = (data, callback) => {
   return {
     type: LOGIN,
     payload: data,
+    callback,
   };
 };

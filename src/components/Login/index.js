@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/user/action";
 
 function Login({ _login, loading }) {
@@ -9,14 +9,19 @@ function Login({ _login, loading }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
     const form = event.currentTarget;
     if (form.checkValidity() === true) {
-      _login({
-        user: { email, password },
-      });
+      _login(
+        {
+          user: { email, password },
+        },
+        navigate
+      );
     }
     setValidated(true);
   };
@@ -88,7 +93,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    _login: (data) => dispatch(login(data)),
+    _login: (data, callback) => dispatch(login(data, callback)),
   };
 }
 

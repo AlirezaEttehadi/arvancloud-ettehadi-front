@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../redux/user/action";
 
 function Register({ _register, loading }) {
@@ -10,14 +10,19 @@ function Register({ _register, loading }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
     const form = event.currentTarget;
     if (form.checkValidity() === true) {
-      _register({
-        user: { username, email, password },
-      });
+      _register(
+        {
+          user: { username, email, password },
+        },
+        navigate
+      );
     }
     setValidated(true);
   };
@@ -97,7 +102,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    _register: (data) => dispatch(register(data)),
+    _register: (data, callback) => dispatch(register(data, callback)),
   };
 }
 

@@ -21,6 +21,9 @@ function* registerSaga(action) {
     yield put(startLoading());
     const user = yield call(request, "post", usersEntity, action.payload);
     localStorage.setItem("user", JSON.stringify(user.data.user));
+    if (user.data.user.token) {
+      yield call(action.callback, "/articles");
+    }
     yield put(setUser(user.data.user));
     yield put(stopLoading());
   } catch (e) {
@@ -33,6 +36,9 @@ function* loginSaga(action) {
     yield put(startLoading());
     const user = yield call(request, "post", loginUserEntity, action.payload);
     localStorage.setItem("user", JSON.stringify(user.data.user));
+    if (user.data.user.token) {
+      yield call(action.callback, "/articles");
+    }
     yield put(setUser(user.data.user));
     yield put(stopLoading());
   } catch (e) {
