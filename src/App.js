@@ -5,6 +5,7 @@ import Articles from "./components/Articles";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Article from "./components/Article";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 function App() {
   return (
@@ -29,33 +30,41 @@ function App() {
         <Route
           path="/articles"
           element={
-            <DashboardLayout>
-              <Articles />
-            </DashboardLayout>
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Articles />
+              </DashboardLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/articles/page/:page"
           element={
-            <DashboardLayout>
-              <Articles />
-            </DashboardLayout>
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Articles />
+              </DashboardLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/articles/create"
           element={
-            <DashboardLayout>
-              <Article />
-            </DashboardLayout>
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Article />
+              </DashboardLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/articles/edit/:slug"
           element={
-            <DashboardLayout>
-              <Article />
-            </DashboardLayout>
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Article />
+              </DashboardLayout>
+            </ProtectedRoute>
           }
         />
       </Routes>
