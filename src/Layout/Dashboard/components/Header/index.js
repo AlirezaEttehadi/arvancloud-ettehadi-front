@@ -4,6 +4,7 @@ import HamburgerMenu from "./HamburgerMenu";
 import logout from "../../../../utils/logout";
 
 export default function Header({ openMobileSidebar }) {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <Navbar
       bg="dark"
@@ -20,7 +21,7 @@ export default function Header({ openMobileSidebar }) {
       </Button>
       <div>
         <Navbar.Brand className="mr-3">Arvan Challenge</Navbar.Brand>
-        <span className="text-white">Welcome alireza</span>
+        <span className="text-white">Welcome {user?.username}</span>
       </div>
       <Button variant="outline-info" onClick={() => logout()}>
         Logout
