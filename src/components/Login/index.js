@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { login } from "../../redux/user/action";
 
-function Login({ _login }) {
+function Login({ _login, loading }) {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +47,23 @@ function Login({ _login }) {
                 Required field
               </Form.Control.Feedback>
             </Form.Group>
-            <Button className="mt-4" variant="primary" type="submit" block>
+            <Button
+              className="mt-4"
+              variant="primary"
+              type="submit"
+              block
+              disabled={loading}
+            >
+              {loading && (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  className="mr-1"
+                />
+              )}
               Login
             </Button>
           </Form>
@@ -67,7 +83,7 @@ function Login({ _login }) {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user.user };
+  return { user: state.user.user, loading: state.global.loading };
 }
 
 function mapDispatchToProps(dispatch) {
