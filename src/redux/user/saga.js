@@ -14,7 +14,7 @@ import {
   stopLoading,
 } from "../global/action";
 
-function* getUserSaga() {
+function* getUserSaga(action) {
   try {
     yield put(startLoading());
     const user = yield call(request, "post", userEntity, action.payload);
