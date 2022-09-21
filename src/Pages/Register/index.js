@@ -5,12 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../redux/user/action";
 
 function Register({ _register, loading }) {
-  const [validated, setValidated] = useState(false);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
+  const [validated, setValidated] = useState(false);
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,7 +20,11 @@ function Register({ _register, loading }) {
     if (form.checkValidity() === true) {
       _register(
         {
-          user: { username, email, password },
+          user: {
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+          },
         },
         navigate
       );
@@ -35,7 +40,9 @@ function Register({ _register, loading }) {
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group
               controlId="formBasicUser"
-              onChange={(event) => setUsername(event.target.value)}
+              onChange={(event) =>
+                setFormData({ ...formData, username: event.target.value })
+              }
             >
               <Form.Label>User</Form.Label>
               <Form.Control required type="text" placeholder="Enter username" />
@@ -45,7 +52,9 @@ function Register({ _register, loading }) {
             </Form.Group>
             <Form.Group
               controlId="formBasicEmail"
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) =>
+                setFormData({ ...formData, email: event.target.value })
+              }
             >
               <Form.Label>Email</Form.Label>
               <Form.Control required type="email" placeholder="Enter email" />
@@ -56,7 +65,9 @@ function Register({ _register, loading }) {
 
             <Form.Group
               controlId="formBasicPassword"
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={(event) =>
+                setFormData({ ...formData, password: event.target.value })
+              }
             >
               <Form.Label>Password</Form.Label>
               <Form.Control required type="password" placeholder="Password" />
