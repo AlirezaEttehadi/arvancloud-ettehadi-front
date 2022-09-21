@@ -5,8 +5,7 @@ import Articles from "./components/Articles";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Article from "./components/Article";
-import { ProtectedRoute } from "./ProtectedRoute";
-import { AuthRoute } from "./AuthRoute";
+import RouteGaurd from "./Routes/RouteGaurd";
 import PageNotFound from "./components/PageNotFound";
 import axios from "axios";
 
@@ -21,61 +20,61 @@ function App() {
         <Route
           path="/"
           element={
-            <AuthRoute>
+            <RouteGaurd type="Auth">
               <AuthLayout>
                 <Login />
               </AuthLayout>
-            </AuthRoute>
+            </RouteGaurd>
           }
         />
         <Route
           path="/register"
           element={
-            <AuthRoute>
+            <RouteGaurd type="Auth">
               <AuthLayout>
                 <Register />
               </AuthLayout>
-            </AuthRoute>
+            </RouteGaurd>
           }
         />
         <Route
           path="/articles"
           element={
-            <ProtectedRoute>
+            <RouteGaurd>
               <DashboardLayout>
                 <Articles />
               </DashboardLayout>
-            </ProtectedRoute>
+            </RouteGaurd>
           }
         />
         <Route
           path="/articles/page/:page"
           element={
-            <ProtectedRoute>
+            <RouteGaurd>
               <DashboardLayout>
                 <Articles />
               </DashboardLayout>
-            </ProtectedRoute>
+            </RouteGaurd>
           }
         />
         <Route
           path="/articles/create"
           element={
-            <ProtectedRoute>
+            <RouteGaurd>
               <DashboardLayout>
                 <Article />
               </DashboardLayout>
-            </ProtectedRoute>
+            </RouteGaurd>
           }
         />
         <Route
           path="/articles/edit/:slug"
           element={
-            <ProtectedRoute>
+            <RouteGaurd>
               <DashboardLayout>
                 <Article />
               </DashboardLayout>
-            </ProtectedRoute>
+            </RouteGaurd>
           }
         />
         <Route path="*" element={<PageNotFound />} />
