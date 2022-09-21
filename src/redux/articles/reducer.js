@@ -1,5 +1,5 @@
 import {
-  CLEARE_ARTICLE,
+  CLEAR_ARTICLE,
   SET_ARTICLE,
   SET_ARTICLES,
   SET_ARTICLES_COUNT,
@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, tags: action.payload };
     case SET_ARTICLE:
       return { ...state, article: action.payload };
-    case CLEARE_ARTICLE:
+    case CLEAR_ARTICLE:
       return { ...state, article: null };
     default:
       return state;

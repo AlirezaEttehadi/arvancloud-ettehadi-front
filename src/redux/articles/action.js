@@ -1,5 +1,5 @@
 import {
-  CLEARE_ARTICLE,
+  CLEAR_ARTICLE,
   CREATE_ARTICLE,
   DELETE_ARTICLE,
   EDIT_ARTICLE,
@@ -73,8 +73,8 @@ export const setArticle = (data) => {
     payload: data,
   };
 };
-export const cleareArticle = () => {
+export const clearArticle = () => {
   return {
-    type: CLEARE_ARTICLE,
+    type: CLEAR_ARTICLE,
   };
 };

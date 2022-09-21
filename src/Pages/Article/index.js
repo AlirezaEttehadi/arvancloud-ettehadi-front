@@ -3,7 +3,7 @@ import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  cleareArticle,
+  clearArticle,
   createArticle,
   editArticle,
   getArticle,
@@ -18,7 +18,7 @@ function Article({
   _editArticle,
   _getArticle,
   article,
-  _cleareArticle,
+  _clearArticle,
 }) {
   const { slug } = useParams();
   const [validated, setValidated] = useState(false);
@@ -66,7 +66,7 @@ function Article({
     if (slug) {
       _getArticle(slug);
     } else {
-      _cleareArticle();
+      _clearArticle();
     }
   }, [slug]);
   useEffect(() => {
@@ -163,7 +163,7 @@ function mapDispatchToProps(dispatch) {
     _editArticle: (data, callback, slug) =>
       dispatch(editArticle(data, callback, slug)),
     _getArticle: (data) => dispatch(getArticle(data)),
-    _cleareArticle: () => dispatch(cleareArticle()),
+    _clearArticle: () => dispatch(clearArticle()),
     _getTags: () => dispatch(getTags()),
   };
 }
