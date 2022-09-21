@@ -5,11 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/user/action";
 
 function Login({ _login, loading }) {
-  const [validated, setValidated] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
+  const [validated, setValidated] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,7 +19,7 @@ function Login({ _login, loading }) {
     if (form.checkValidity() === true) {
       _login(
         {
-          user: { email, password },
+          user: { email: formData.email, password: formData.password },
         },
         navigate
       );
@@ -33,7 +34,9 @@ function Login({ _login, loading }) {
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group
               controlId="formBasicEmail"
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) =>
+                setFormData({ ...formData, email: event.target.value })
+              }
             >
               <Form.Label>Email</Form.Label>
               <Form.Control required type="email" placeholder="Enter email" />
@@ -44,7 +47,9 @@ function Login({ _login, loading }) {
 
             <Form.Group
               controlId="formBasicPassword"
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={(event) =>
+                setFormData({ ...formData, password: event.target.value })
+              }
             >
               <Form.Label>Password</Form.Label>
               <Form.Control required type="password" placeholder="Password" />
