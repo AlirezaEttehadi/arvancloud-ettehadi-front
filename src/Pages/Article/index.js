@@ -31,31 +31,18 @@ function Article({
     event.preventDefault();
     event.stopPropagation();
     const form = event.currentTarget;
+    const requestBody = {
+      article: {
+        title,
+        description,
+        body,
+        tags: localTags,
+      },
+    };
     if (form.checkValidity() === true) {
       slug
-        ? _editArticle(
-            {
-              article: {
-                title,
-                description,
-                body,
-                tags: localTags,
-              },
-            },
-            navigate,
-            slug
-          )
-        : _createArticle(
-            {
-              article: {
-                title,
-                description,
-                body,
-                tags: localTags,
-              },
-            },
-            navigate
-          );
+        ? _editArticle(requestBody, navigate, slug)
+        : _createArticle(requestBody, navigate);
     }
     setValidated(true);
   };
