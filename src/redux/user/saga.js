@@ -37,6 +37,15 @@ function* registerSaga(action) {
     yield put(stopLoading());
   } catch (e) {
     yield put(stopLoading());
+    yield put(
+      setSnackbarMessage({
+        variant: "danger",
+        shortMessage: "Register Failed!",
+        longMessage: "Registration was not successful",
+        layoutType: "auth",
+        show: true,
+      })
+    );
     console.log(e);
   }
 }
