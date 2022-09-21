@@ -20,7 +20,7 @@ import {
   stopLoading,
 } from "../global/action";
 
-function* getArticlesSaga(action) {
+function* getArticlesSaga() {
   try {
     yield put(startLoading());
     const articles = yield call(request, "get", articlesEntity);
@@ -76,18 +76,6 @@ function* createArticleSaga(action) {
     console.log(e);
   }
 }
-function* getTagsSaga() {
-  try {
-    yield put(startLoading());
-    const tags = yield call(request, "get", tagsEntity);
-    yield put(setTags(tags.data.tags));
-    yield put(stopLoading());
-  } catch (e) {
-    yield put(stopLoading());
-    console.log(e);
-  }
-}
-
 function* editArticleSaga(action) {
   try {
     yield put(startLoading());
@@ -124,12 +112,23 @@ function* getArticleSaga(action) {
     console.log(e);
   }
 }
+function* getTagsSaga() {
+  try {
+    yield put(startLoading());
+    const tags = yield call(request, "get", tagsEntity);
+    yield put(setTags(tags.data.tags));
+    yield put(stopLoading());
+  } catch (e) {
+    yield put(stopLoading());
+    console.log(e);
+  }
+}
 
 function* myArticlesSaga() {
   yield takeLatest(GET_ARTICLES, getArticlesSaga);
+  yield takeLatest(GET_TAGS, getTagsSaga);
   yield takeLatest(DELETE_ARTICLE, deleteArticleSaga);
   yield takeLatest(CREATE_ARTICLE, createArticleSaga);
-  yield takeLatest(GET_TAGS, getTagsSaga);
   yield takeLatest(EDIT_ARTICLE, editArticleSaga);
   yield takeLatest(GET_ARTICLE, getArticleSaga);
 }
