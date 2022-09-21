@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import TableComponent from "./TableComponent";
-import TablePagination from "./TablePagination";
-import DeleteModal from "./DeleteModal";
+import TableComponent from "./components/TableComponent";
+import TablePagination from "./components/TablePagination";
+import DeleteModal from "./components/DeleteModal";
 import { connect } from "react-redux";
 import { deleteArticle, getArticles } from "../../redux/articles/action";
 import Spinner from "react-bootstrap/Spinner";
