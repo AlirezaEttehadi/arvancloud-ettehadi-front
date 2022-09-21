@@ -36,11 +36,7 @@ function* getArticlesSaga() {
 function* deleteArticleSaga(action) {
   try {
     yield put(startLoading());
-    const articles = yield call(
-      request,
-      "delete",
-      articleEntity(action.payload)
-    );
+    yield call(request, "delete", articleEntity(action.payload));
     yield put(
       setSnackbarMessage({
         variant: "success",
@@ -60,7 +56,7 @@ function* deleteArticleSaga(action) {
 function* createArticleSaga(action) {
   try {
     yield put(startLoading());
-    const article = yield call(request, "post", articlesEntity, action.payload);
+    yield call(request, "post", articlesEntity, action.payload);
     yield call(action.callback, "/articles");
     yield put(
       setSnackbarMessage({
@@ -80,12 +76,7 @@ function* createArticleSaga(action) {
 function* editArticleSaga(action) {
   try {
     yield put(startLoading());
-    const article = yield call(
-      request,
-      "put",
-      articleEntity(action.slug),
-      action.payload
-    );
+    yield call(request, "put", articleEntity(action.slug), action.payload);
     yield call(action.callback, "/articles");
     yield put(
       setSnackbarMessage({
