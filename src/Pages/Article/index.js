@@ -23,20 +23,22 @@ function Article({
   const navigate = useNavigate();
   const { slug } = useParams();
   const [validated, setValidated] = useState(false);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [body, setBody] = useState("");
-  const [localTags, setLocalTags] = useState([]);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    body: "",
+    tags: [],
+  });
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
     const form = event.currentTarget;
     const requestBody = {
       article: {
-        title,
-        description,
-        body,
-        tags: localTags,
+        title: formData.title,
+        description: formData.description,
+        body: formData.body,
+        tags: formData.tags,
       },
     };
     if (form.checkValidity() === true) {
@@ -58,15 +60,19 @@ function Article({
   }, [slug]);
   useEffect(() => {
     if (article) {
-      setTitle(article.title);
-      setDescription(article.description);
-      setBody(article.body);
-      setLocalTags(article.tagList);
+      setFormData({
+        title: article.title,
+        description: article.description,
+        body: article.body,
+        tags: article.tags,
+      });
     } else {
-      setTitle("");
-      setDescription("");
-      setBody("");
-      setLocalTags([]);
+      setFormData({
+        title: "",
+        description: "",
+        body: "",
+        tags: "",
+      });
     }
   }, [article]);
 
@@ -78,29 +84,44 @@ function Article({
           <div className="col-12 col-md-9 pl-0">
             <Form.Group
               controlId="formBasicTitle"
-              onChange={(event) => setTitle(event.target.value)}
+              onChange={(event) =>
+                setFormData({ ...formData, title: event.target.value })
+              }
             >
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Title" value={title} />
+              <Form.Control
+                type="text"
+                placeholder="Title"
+                value={formData.title}
+              />
             </Form.Group>
 
             <Form.Group
               controlId="formBasicDescription"
-              onChange={(event) => setDescription(event.target.value)}
+              onChange={(event) =>
+                setFormData({ ...formData, description: event.target.value })
+              }
             >
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Description"
-                value={description}
+                value={formData.description}
               />
             </Form.Group>
             <Form.Group
               controlId="formBasicBody"
-              onChange={(event) => setBody(event.target.value)}
+              onChange={(event) =>
+                setFormData({ ...formData, body: event.target.value })
+              }
             >
               <Form.Label>Body</Form.Label>
-              <Form.Control as="textarea" rows="8" name="Body" value={body} />
+              <Form.Control
+                as="textarea"
+                rows="8"
+                name="Body"
+                value={formData.body}
+              />
             </Form.Group>
           </div>
           <div className="col-12 col-md-3 pl-0">
