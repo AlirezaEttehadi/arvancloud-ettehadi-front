@@ -20,13 +20,13 @@ function Article({
   article,
   _clearArticle,
 }) {
+  const navigate = useNavigate();
   const { slug } = useParams();
   const [validated, setValidated] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [body, setBody] = useState("");
   const [localTags, setLocalTags] = useState([]);
-  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
