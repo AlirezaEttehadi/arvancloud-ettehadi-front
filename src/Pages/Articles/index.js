@@ -13,6 +13,7 @@ function Articles({
   loading,
   articlesCount,
 }) {
+  const numberOfPages = Math.ceil(articlesCount / 10);
   const [deleleModalState, setDeleteModalState] = useState({
     isOpen: false,
     slug: null,
@@ -20,7 +21,6 @@ function Articles({
   useEffect(() => {
     _getArticles();
   }, []);
-  const numberOfPages = Math.ceil(articlesCount / 10);
 
   return (
     <div className="d-flex flex-column pt-3 px-3 w-100 vh-100">
