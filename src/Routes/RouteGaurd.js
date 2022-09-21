@@ -1,4 +1,4 @@
-import { Navigate, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const RouteGaurd = ({ children, type = "Protected" }) => {
   function hasJWT() {
@@ -23,4 +23,4 @@ const RouteGaurd = ({ children, type = "Protected" }) => {
   }
 };
 
-export default Route;
+export default RouteGaurd;

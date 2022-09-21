@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthLayout from "./Layout/Auth";
 import DashboardLayout from "./Layout/Dashboard";
-import Articles from "./components/Articles";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Article from "./components/Article";
+import Articles from "./Pages/Articles";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Article from "./Pages/Article";
 import RouteGaurd from "./Routes/RouteGaurd";
-import PageNotFound from "./components/PageNotFound";
+import PageNotFound from "./Pages/PageNotFound";
 import axios from "axios";
 
 function App() {
