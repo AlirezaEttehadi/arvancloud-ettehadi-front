@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import axios from "axios";
+
 import AuthLayout from "./Layout/Auth";
 import DashboardLayout from "./Layout/Dashboard";
 import Articles from "./Pages/Articles";
@@ -7,7 +9,6 @@ import Register from "./Pages/Register";
 import Article from "./Pages/Article";
 import RouteGaurd from "./Routes/RouteGaurd";
 import PageNotFound from "./Pages/PageNotFound";
-import axios from "axios";
 
 function App() {
   const token = JSON.parse(localStorage.getItem("user"))?.token;

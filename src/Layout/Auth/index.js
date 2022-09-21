@@ -1,4 +1,5 @@
 import React from "react";
+
 import SnackbarMessage from "../components/SnackbarMessage";
 
 export default function Auth({ children }) {

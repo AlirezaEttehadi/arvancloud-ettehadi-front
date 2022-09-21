@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Alert } from "react-bootstrap";
+
 import { connect } from "react-redux";
+import { Alert } from "react-bootstrap";
 
 function SnackbarMessage({ snackbarMessage }) {
   const [show, setShow] = useState(false);
