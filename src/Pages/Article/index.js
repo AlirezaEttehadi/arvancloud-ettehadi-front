@@ -25,6 +25,7 @@ function Article({
   const navigate = useNavigate();
   const { slug } = useParams();
   const [validated, setValidated] = useState(false);
+  const [tag, setTag] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -40,7 +41,7 @@ function Article({
         title: formData.title,
         description: formData.description,
         body: formData.body,
-        tags: formData.tags,
+        tagList: formData.tags,
       },
     };
     if (form.checkValidity() === true) {
@@ -53,6 +54,12 @@ function Article({
   useEffect(() => {
     _getTags();
   }, []);
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      tags,
+    });
+  }, [tags]);
   useEffect(() => {
     if (slug) {
       _getArticle(slug);
@@ -91,11 +98,7 @@ function Article({
               }
             >
               <Form.Label>Title</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Title"
-                value={formData.title}
-              />
+              <Form.Control type="text" placeholder="Title" />
             </Form.Group>
 
             <Form.Group
@@ -105,11 +108,7 @@ function Article({
               }
             >
               <Form.Label>Description</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Description"
-                value={formData.description}
-              />
+              <Form.Control type="text" placeholder="Description" />
             </Form.Group>
             <Form.Group
               controlId="formBasicBody"
@@ -118,22 +117,36 @@ function Article({
               }
             >
               <Form.Label>Body</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows="8"
-                name="Body"
-                value={formData.body}
-              />
+              <Form.Control as="textarea" rows="8" name="Body" />
             </Form.Group>
           </div>
           <div className="col-12 col-md-3 pl-0">
             <Form.Group controlId="formBasicTitle">
               <Form.Label>Tags</Form.Label>
-              <Form.Control type="text" placeholder="New tag" />
+              <div className="d-flex">
+                <Form.Control
+                  type="text"
+                  placeholder="New tag"
+                  onChange={(event) => setTag(event.target.value)}
+                />
+                <Button
+                  type="button"
+                  size="md"
+                  onClick={() => {
+                    setFormData({
+                      ...formData,
+                      tags: [...formData.tags, tag],
+                    });
+                    setTag("");
+                  }}
+                >
+                  Add
+                </Button>
+              </div>
             </Form.Group>
             <Form.Group controlId="exampleForm.SelectCustomHtmlSize">
               <Form.Control as="select" htmlSize={10} custom>
-                {tags?.map((tag, index) => {
+                {formData?.tags?.map?.((tag, index) => {
                   return <option key={index}>{tag}</option>;
                 })}
               </Form.Control>
