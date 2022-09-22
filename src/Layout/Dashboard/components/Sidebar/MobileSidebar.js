@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 
 import { Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const MobileSidebar = ({ closeMobileSidebar }, ref) => {
   return (
@@ -38,3 +39,7 @@ const MobileSidebar = ({ closeMobileSidebar }, ref) => {
   );
 };
 export default forwardRef(MobileSidebar);
+
+MobileSidebar.propTypes = {
+  closeMobileSidebar: PropTypes.func,
+};

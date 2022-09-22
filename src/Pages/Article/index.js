@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import {
   clearArticle,
@@ -98,7 +99,11 @@ function Article({
               }
             >
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Title" />
+              <Form.Control
+                type="text"
+                placeholder="Title"
+                value={formData.title}
+              />
             </Form.Group>
 
             <Form.Group
@@ -108,7 +113,11 @@ function Article({
               }
             >
               <Form.Label>Description</Form.Label>
-              <Form.Control type="text" placeholder="Description" />
+              <Form.Control
+                type="text"
+                placeholder="Description"
+                value={formData.description}
+              />
             </Form.Group>
             <Form.Group
               controlId="formBasicBody"
@@ -117,7 +126,12 @@ function Article({
               }
             >
               <Form.Label>Body</Form.Label>
-              <Form.Control as="textarea" rows="8" name="Body" />
+              <Form.Control
+                as="textarea"
+                rows="8"
+                name="Body"
+                value={formData.body}
+              />
             </Form.Group>
           </div>
           <div className="col-12 col-md-3 pl-0">
@@ -192,3 +206,14 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);
+
+Article.propTypes = {
+  _createArticle: PropTypes.func,
+  _getTags: PropTypes.func,
+  tags: PropTypes.array,
+  loading: PropTypes.bool,
+  _editArticle: PropTypes.func,
+  _getArticle: PropTypes.func,
+  article: PropTypes.object,
+  _clearArticle: PropTypes.func,
+};

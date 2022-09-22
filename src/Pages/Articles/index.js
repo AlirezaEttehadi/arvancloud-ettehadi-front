@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { connect } from "react-redux";
 import Spinner from "react-bootstrap/Spinner";
+import PropTypes from "prop-types";
 
 import TableComponent from "./components/TableComponent";
 import TablePagination from "./components/TablePagination";
@@ -66,3 +67,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Articles);
+
+Articles.propTypes = {
+  _getArticles: PropTypes.func,
+  articles: PropTypes.array,
+  _deleteArticle: PropTypes.func,
+  loading: PropTypes.bool,
+  articlesCount: PropTypes.number,
+};

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { register } from "../../redux/user/action";
 
@@ -120,3 +121,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
+
+Register.propTypes = {
+  _register: PropTypes.func,
+  loading: PropTypes.bool,
+};

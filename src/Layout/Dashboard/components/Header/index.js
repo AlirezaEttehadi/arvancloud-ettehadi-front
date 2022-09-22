@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Button, Navbar } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 import HamburgerMenu from "./HamburgerMenu";
 import logout from "../../../../utils/logout";
@@ -31,3 +32,7 @@ export default function Header({ openMobileSidebar }) {
     </Navbar>
   );
 }
+
+Header.propTypes = {
+  openMobileSidebar: PropTypes.func,
+};

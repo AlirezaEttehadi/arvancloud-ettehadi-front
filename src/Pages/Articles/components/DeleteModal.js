@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Button, Modal } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function DeleteModal(props) {
   const { onHide, slug, _deleteArticle } = props;
@@ -31,3 +32,9 @@ export default function DeleteModal(props) {
     </Modal>
   );
 }
+
+DeleteModal.propTypes = {
+  onHide: PropTypes.func,
+  slug: PropTypes.string,
+  _deleteArticle: PropTypes.func,
+};

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { connect } from "react-redux";
 import { Alert } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 function SnackbarMessage({ snackbarMessage }) {
   const [show, setShow] = useState(false);
@@ -38,3 +39,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SnackbarMessage);
+
+SnackbarMessage.propTypes = {
+  snackbarMessage: PropTypes.object,
+};

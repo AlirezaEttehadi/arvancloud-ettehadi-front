@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 
+import PropTypes from "prop-types";
+
 import SnackbarMessage from "../components/SnackbarMessage";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -35,3 +37,7 @@ export default function Dashboard({ children }) {
     </div>
   );
 }
+
+Dashboard.propTypes = {
+  children: PropTypes.element.isRequired,
+};

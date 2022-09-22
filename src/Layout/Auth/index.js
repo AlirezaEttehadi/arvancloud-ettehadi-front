@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import SnackbarMessage from "../components/SnackbarMessage";
 
 export default function Auth({ children }) {
@@ -10,3 +12,7 @@ export default function Auth({ children }) {
     </div>
   );
 }
+
+Auth.propTypes = {
+  children: PropTypes.element.isRequired,
+};

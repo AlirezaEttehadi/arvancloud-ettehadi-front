@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Pagination } from "react-bootstrap";
-
+import PropTypes from "prop-types";
 export default function TablePagination({ numberOfPages }) {
   const active = 1;
   const pages = [];
@@ -20,3 +20,7 @@ export default function TablePagination({ numberOfPages }) {
     </Pagination>
   );
 }
+
+TablePagination.propTypes = {
+  numberOfPages: PropTypes.number,
+};

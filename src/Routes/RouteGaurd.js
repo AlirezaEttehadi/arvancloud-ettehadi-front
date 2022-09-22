@@ -1,4 +1,5 @@
 import { Navigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const RouteGaurd = ({ children, type = "Protected" }) => {
   function hasJWT() {
@@ -24,3 +25,8 @@ const RouteGaurd = ({ children, type = "Protected" }) => {
 };
 
 export default RouteGaurd;
+
+RouteGaurd.propTypes = {
+  children: PropTypes.element.isRequired,
+  type: PropTypes.string,
+};

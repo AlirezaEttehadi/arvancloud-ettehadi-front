@@ -2,6 +2,7 @@ import React from "react";
 
 import { Dropdown, DropdownButton, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export default function TableComponent({ setDeleteModalState, articles }) {
   const navigate = useNavigate();
@@ -65,3 +66,8 @@ export default function TableComponent({ setDeleteModalState, articles }) {
     </Table>
   );
 }
+
+TableComponent.propTypes = {
+  setDeleteModalState: PropTypes.func,
+  articles: PropTypes.array,
+};

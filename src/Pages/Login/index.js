@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { login } from "../../redux/user/action";
 
@@ -81,7 +82,7 @@ function Login({ _login, loading }) {
           </Form>
         </div>
         <div className="mt-3">
-          <span className="mr-2">Don't have an account?</span>
+          <span className="mr-2">{`Don't have an account?`}</span>
           <Link
             className="login-register-button font-weight-bold"
             to="/register"
@@ -105,3 +106,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+Login.propTypes = {
+  _login: PropTypes.func,
+  loading: PropTypes.bool,
+};
