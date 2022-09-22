@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
+import axios from "axios";
 
 import { setUser } from "./action";
 import { GET_USER, LOGIN, REGISTER } from "./constants";
@@ -29,6 +30,9 @@ function* registerSaga(action) {
   try {
     yield put(startLoading());
     const user = yield call(request, "post", usersEntity, action.payload);
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Token ${user.data.user.token}`;
     yield put(setUser(user.data.user));
     localStorage.setItem("user", JSON.stringify(user.data.user));
     if (user.data.user.token) {
@@ -53,6 +57,9 @@ function* loginSaga(action) {
   try {
     yield put(startLoading());
     const user = yield call(request, "post", loginUserEntity, action.payload);
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Token ${user.data.user.token}`;
     yield put(setUser(user.data.user));
     localStorage.setItem("user", JSON.stringify(user.data.user));
     if (user.data.user.token) {
