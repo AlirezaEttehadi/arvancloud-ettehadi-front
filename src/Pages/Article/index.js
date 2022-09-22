@@ -81,7 +81,6 @@ function Article({
         title: "",
         description: "",
         body: "",
-        tags: "",
       });
     }
   }, [article]);
